@@ -21,7 +21,10 @@ namespace EventbriteNET.Http
             var request = new RestRequest("events/{id}/ticket_classes/");
             request.AddUrlSegment("id", Context.EventId.ToString());
             request.AddQueryParameter("token", Context.Token);
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
 
+         
             return this.Execute<IList<TicketClass>>(request);
         }
 
@@ -34,6 +37,8 @@ namespace EventbriteNET.Http
             request.AddUrlSegment("id", Context.EventId.ToString());
             request.AddUrlSegment("ticketId", id.ToString());
             request.AddQueryParameter("token", Context.Token);
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
 
             return this.Execute<TicketClass>(request);
         }
@@ -93,6 +98,8 @@ namespace EventbriteNET.Http
             request.AddUrlSegment("id", Context.EventId.ToString());
             request.AddUrlSegment("ticketId", id.ToString());
             request.AddQueryParameter("token", Context.Token);
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
 
             return this.ExecuteAsync<TicketClass>(request);
         }

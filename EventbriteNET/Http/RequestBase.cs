@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -162,7 +164,9 @@ namespace EventbriteNET.Http
                 try
                 {
                     var response = client.SendAsync(httpRequest);
+
                     return response.Result;
+
                 }
                 catch (Exception ex)
                 {

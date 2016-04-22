@@ -1,6 +1,8 @@
 ﻿using EventbriteNET.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,15 +15,46 @@ namespace EventbriteNET.Http
     {
         public EventRequestHander(EventbriteContext context) : base(context) { }
 
-        public IList<Event> Search()
+        public PagedEvents Search()
         {
+            var request = new RestRequest("events/search/");
+            request.AddQueryParameter("token", Context.Token);
 
-            return new List<Event>();
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
+
+            var events = this.Execute<PagedEvents>(request);
+
+            return events;
         }
 
+        public PagedEvents GetOwnedEvents()
+        {
+            var request = new RestRequest("users/me/owned_events/");
+            request.AddQueryParameter("token", Context.Token);
+
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
+
+            return this.Execute<PagedEvents>(request);
+
+        }
+        
         protected override IList<Event> OnGet()
         {
-            throw new NotImplementedException();
+            var request = new RestRequest("users/me/owned_events/");
+            request.AddQueryParameter("token", Context.Token);
+
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
+
+            var events = this.Execute<PagedEvents>(request);
+
+            Context.Pagination  = events.Pagination;
+
+            return events.Events;
+
+            //throw new NotImplementedException();
         }
 
         protected override Event OnGet(long id)
@@ -118,6 +151,9 @@ namespace EventbriteNET.Http
             var request = new RestRequest("events/{id}/");
             request.AddUrlSegment("id", id.ToString());
             request.AddQueryParameter("token", Context.Token);
+
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
 
             Context.EventId = id;
             return this.ExecuteAsync<Event>(request);

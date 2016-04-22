@@ -13,5 +13,7 @@ namespace EventbriteNET.Http
         Task<T> GetAsync<T>(long id) where T : EventbriteObject;
         Task CreateAsync<T>(T entity) where T : EventbriteObject;
         Task UpdateAsync<T>(T entity) where T : EventbriteObject;
+
+      
     }
 }
