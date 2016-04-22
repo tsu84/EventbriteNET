@@ -1,0 +1,10 @@
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.exe.config
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.exe
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.pdb
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNET.dll
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNET.pdb
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.csprojResolveAssemblyReference.cache
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.exe
+C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.pdb
