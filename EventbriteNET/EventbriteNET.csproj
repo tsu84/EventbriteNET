@@ -48,8 +48,10 @@
     <Compile Include="Event.cs" />
     <Compile Include="Fields.cs" />
     <Compile Include="Format.cs" />
+    <Compile Include="Http\AttendeesRequestHandler.cs" />
     <Compile Include="Http\CategoryRequestHander.cs" />
     <Compile Include="Http\UserRequestHander.cs" />
+    <Compile Include="Http\VenueRequestHandler.cs" />
     <Compile Include="Organizer.cs" />
     <Compile Include="Collections\IPaginatedResponse.cs" />
     <Compile Include="TicketClass.cs" />

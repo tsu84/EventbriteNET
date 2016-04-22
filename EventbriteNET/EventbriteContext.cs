@@ -21,6 +21,9 @@ namespace EventbriteNET
             this.RequestHandlers[typeof(Event).Name] = new EventRequestHander(this) as IRequestHandler;
             this.RequestHandlers[typeof(TicketClass).Name] = new TicketClassRequestHander(this) as IRequestHandler;
             this.RequestHandlers[typeof(User).Name] = new UserRequestHander(this) as IRequestHandler;
+            this.RequestHandlers[typeof(Attendee).Name] = new AttendeesRequestHandler(this) as IRequestHandler;
+            this.RequestHandlers[typeof(Venue).Name] = new VenueRequestHandler(this) as IRequestHandler;
+
         }
 
         /// <summary>
@@ -41,6 +44,9 @@ namespace EventbriteNET
         public long UserId { get; set; }
         public long OrganizerId { get; set; }
         public long EventId { get; set; }
+        public long[] VenuesId { get; set; }
+        public int Page { get; set; }
+        public Pagination Pagination { get; set; }
 
         /// <summary>
         /// Fetches all specified Objects
@@ -109,12 +115,21 @@ namespace EventbriteNET
         /// Searches existing Events on the Eventbrite website
         /// </summary>
         /// <param name="id">ID of Event to unpublish</param>
-        public void Search()
+        public PagedEvents Search()
         {
             var handler = (EventRequestHander)GetHandler(typeof(Event));
-            handler.Search();
+             return handler.Search();
         }
 
+        /// <summary>
+        /// Get the users Events Created
+        /// </summary>
+        ///
+        public PagedEvents GetOwnedEvents()
+        {
+            var handler = (EventRequestHander)GetHandler(typeof(Event));
+            return handler.GetOwnedEvents();
+        }
         /// <summary>
         /// Finds appropriate <see cref="IRequestHandler" />
         /// </summary>

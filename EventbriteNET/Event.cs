@@ -83,4 +83,12 @@ namespace EventbriteNET
         [JsonProperty("ticket_classes")]
         public IList<TicketClass> TicketClasses { get; set; }
     }
+
+    public class PagedEvents : EventbriteObject
+    {
+
+        [JsonProperty("pagination")]
+        public Pagination Pagination { get; set; }
+        public List<Event> Events { get; set; }
+    }
 }
