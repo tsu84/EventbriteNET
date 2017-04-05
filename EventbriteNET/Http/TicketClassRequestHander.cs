@@ -25,7 +25,11 @@ namespace EventbriteNET.Http
                 request.AddQueryParameter("page", Context.Page.ToString());
 
          
-            return this.Execute<IList<TicketClass>>(request);
+            var eventTicketClasses = this.Execute<EventTicketClasses>(request);
+
+            Context.Pagination = eventTicketClasses.Pagination;
+
+            return eventTicketClasses.TicketClasses;
         }
 
         protected override TicketClass OnGet(long id)

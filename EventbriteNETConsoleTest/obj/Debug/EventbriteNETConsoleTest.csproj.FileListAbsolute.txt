@@ -8,3 +8,13 @@ C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\Eventbrit
 C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.csprojResolveAssemblyReference.cache
 C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.exe
 C:\Users\ageorgiou\Documents\Visual Studio 2012\Projects\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.pdb
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.exe.config
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.exe
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNETConsoleTest.pdb
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNET.dll
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\Newtonsoft.Json.dll
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\EventbriteNET.pdb
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\bin\Debug\Newtonsoft.Json.xml
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.csprojResolveAssemblyReference.cache
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.exe
+D:\FASTTRACK\EventbriteNET\EventbriteNETConsoleTest\obj\Debug\EventbriteNETConsoleTest.pdb

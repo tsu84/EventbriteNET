@@ -27,6 +27,23 @@ namespace EventbriteNET.Http
 
             return events;
         }
+        public IList<Event> Search(IList<QueryParameter> qparams)
+        {
+            var request = new RestRequest("events/search/");
+            request.AddQueryParameter("token", Context.Token);
+            foreach(QueryParameter q in qparams)
+            {
+                request.AddQueryParameter(q.Key, q.Value);
+            }
+
+            if (Context.Page > 1)
+                request.AddQueryParameter("page", Context.Page.ToString());
+
+            var events = this.Execute<PagedEvents>(request);
+
+            return events.Events;
+        }
+
 
         public PagedEvents GetOwnedEvents()
         {
@@ -39,22 +56,50 @@ namespace EventbriteNET.Http
             return this.Execute<PagedEvents>(request);
 
         }
-        
-        protected override IList<Event> OnGet()
+
+        public IList<Event> GetOrganizedEvents(long organizerId, IList<QueryParameter> qparams)
         {
-            var request = new RestRequest("users/me/owned_events/");
+            var request = new RestRequest("organizers/{organizerId}/events");
+            request.AddUrlSegment("organizerId", organizerId.ToString());
             request.AddQueryParameter("token", Context.Token);
+            foreach (QueryParameter q in qparams)
+            {
+                request.AddQueryParameter(q.Key, q.Value);
+            }
 
             if (Context.Page > 1)
                 request.AddQueryParameter("page", Context.Page.ToString());
 
             var events = this.Execute<PagedEvents>(request);
 
-            Context.Pagination  = events.Pagination;
-
             return events.Events;
+        }
+        
+        protected override IList<Event> OnGet()
+        {
+            List<Event> eventList = new List<Event>();
+            return OnGet(eventList, 1);
 
             //throw new NotImplementedException();
+        }
+
+        protected List<Event> OnGet(List<Event> list, int page)
+        {
+            var request = new RestRequest("users/me/owned_events/");
+            request.AddQueryParameter("token", Context.Token);
+
+            if (page > 1)
+                request.AddQueryParameter("page", page.ToString());
+
+            var events = this.Execute<PagedEvents>(request);
+            list.AddRange(events.Events);
+
+            Context.Pagination = events.Pagination;
+
+            if (page < events.Pagination.PageCount)
+                OnGet(list, page + 1);
+
+            return list;
         }
 
         protected override Event OnGet(long id)

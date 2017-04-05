@@ -123,4 +123,29 @@ namespace EventbriteNET
         [JsonProperty("attendees")]
         public List<Attendee> Attendees { get; set; }
     }
+
+    public static class AttendeeUtils
+    {
+
+        public static string getAnswer(Attendee a, long quid)
+        {
+            List<Newtonsoft.Json.Linq.JObject> l;
+
+            //Newtonsoft.Json.Linq.JObject o = (Newtonsoft.Json.Linq.JObject)a.answers[0];
+            var conv = new Converter<object, Newtonsoft.Json.Linq.JObject>(x => (Newtonsoft.Json.Linq.JObject)(x));
+            l = a.answers.ConvertAll<Newtonsoft.Json.Linq.JObject>(conv);
+            Newtonsoft.Json.Linq.JObject o = l.Find(x => x.Last.Last.ToString().Equals(quid.ToString()));
+            if (o != null && o.Count == 4)
+            {
+                return o.First.Last.ToString();
+            }
+            else
+                return string.Empty;
+            //a.answers.Find( x=> (Newtonsoft.Json.Linq.JObject)x.)
+            //int c = d.Count;
+            //dynamic d = (Newtonsoft.Json.Linq.JObject)a.answers[0];
+            //string s = d.question_id.Value;            
+        }
+
+    }
 }

@@ -67,6 +67,8 @@ namespace EventbriteNET
         public string Display { get; set; }
         [JsonProperty("value")]
         public int Value { get; set; }
+        [JsonProperty("major_value")]
+        public float MajorValue { get; set; }
     }
 
     public class ImageField
@@ -103,7 +105,8 @@ namespace EventbriteNET
         cancelled,
         live,
         started,
-        completed
+        completed,
+        ended
     }
 
     public enum OrderOptions

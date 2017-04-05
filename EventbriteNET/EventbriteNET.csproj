@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="Attendee.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Http\QueryParameter.cs" />
+    <Compile Include="Http\QuestionRequestHandler.cs" />
+    <Compile Include="Question.cs" />
     <Compile Include="Collections\PaginatedResponse.Category.cs" />
     <Compile Include="Collections\PaginatedResponse.cs" />
     <Compile Include="EventbriteObject.cs" />

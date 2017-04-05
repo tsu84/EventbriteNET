@@ -23,7 +23,7 @@ namespace EventbriteNET
             this.RequestHandlers[typeof(User).Name] = new UserRequestHander(this) as IRequestHandler;
             this.RequestHandlers[typeof(Attendee).Name] = new AttendeesRequestHandler(this) as IRequestHandler;
             this.RequestHandlers[typeof(Venue).Name] = new VenueRequestHandler(this) as IRequestHandler;
-
+            this.RequestHandlers[typeof(Question).Name] = new QuestionRequestHandler(this) as IRequestHandler;
         }
 
         /// <summary>
@@ -45,6 +45,7 @@ namespace EventbriteNET
         public long OrganizerId { get; set; }
         public long EventId { get; set; }
         public long[] VenuesId { get; set; }
+        public long[] QuestionId { get; set; }
         public int Page { get; set; }
         public Pagination Pagination { get; set; }
 
@@ -121,6 +122,12 @@ namespace EventbriteNET
              return handler.Search();
         }
 
+        public IList<Event> Search(IList<QueryParameter> qparams)
+        {
+            var handler = (EventRequestHander)GetHandler(typeof(Event));
+            return handler.Search(qparams);
+        }
+
         /// <summary>
         /// Get the users Events Created
         /// </summary>
@@ -130,6 +137,13 @@ namespace EventbriteNET
             var handler = (EventRequestHander)GetHandler(typeof(Event));
             return handler.GetOwnedEvents();
         }
+
+        public IList<Event> GetOrganizedEvents(IList<QueryParameter> qparams)
+        {
+            var handler = (EventRequestHander)GetHandler(typeof(Event));
+            return handler.GetOrganizedEvents(this.OrganizerId, qparams);
+        }
+
         /// <summary>
         /// Finds appropriate <see cref="IRequestHandler" />
         /// </summary>

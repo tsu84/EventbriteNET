@@ -27,19 +27,27 @@ namespace EventbriteNET.Http
             if (Context.EventId <= 0)
                 throw new ArgumentException("EventId not set in Context", "entity");
 
+            List<Attendee> attendeeList = new List<Attendee>();
+            return OnGet(attendeeList, 1);
+        }
+
+        protected List<Attendee> OnGet(List<Attendee> list, int page)
+        {
             var request = new RestRequest("events/{id}/attendees/");
             request.AddUrlSegment("id", Context.EventId.ToString());
             request.AddQueryParameter("token", Context.Token);
-            if (Context.Page > 1)
-                request.AddQueryParameter("page", Context.Page.ToString());
-            
+            if (page > 1)
+                request.AddQueryParameter("page", page.ToString());
+
             var eventAttendees = this.Execute<EventAttendees>(request);
+            list.AddRange(eventAttendees.Attendees);
 
             Context.Pagination = eventAttendees.Pagination;
 
-            return eventAttendees.Attendees;
+            if (page < eventAttendees.Pagination.PageCount)
+                OnGet(list, page + 1);
 
-
+            return list;
         }
 
         protected override Attendee OnGet(long id)
