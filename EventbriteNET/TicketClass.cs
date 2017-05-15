@@ -9,8 +9,8 @@ namespace EventbriteNET
     /// </summary>
     public class TicketClass : EventbriteObject
     {
-        [JsonProperty("id")]
-        public long Id { get; set; }
+        //[JsonProperty("id")]
+        //public long Id { get; set; }
         [JsonProperty("actual_cost")]
         public CurrencyField ActualCost { get; set; }
         [JsonProperty("actual_fee")]
@@ -21,8 +21,8 @@ namespace EventbriteNET
         public CurrencyField Fee { get; set; }
         [JsonProperty("tax")]
         public CurrencyField Tax { get; set; }
-        [JsonProperty("resource_uri")]
-        public string ResourceUri { get; set; }
+        //[JsonProperty("resource_uri")]
+        //public string ResourceUri { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
         [JsonProperty("description")]
